@@ -1,0 +1,12 @@
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use App\Command\CommandValidate;
+use App\State\Extractor;
+use App\Validator\Validator;
+use Monolog\Logger;
+
+$commandValidate = new CommandValidate(new Extractor(), new Validator(), new Logger(CommandValidate::class));
+array_shift($argv);
+$commandValidate->execute($argv);
